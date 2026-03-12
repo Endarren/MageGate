@@ -1,10 +1,9 @@
 ## Author: Endar_Ren
-## Interface: 80000
+## Interface: 120001
 ## Notes: Adds a touch of Star Gate to the mage portals when they are being casted.  This is a novelty addon, it does not change or add to the interface.  This is the basic version.
 ## Title: Mage Gate
-## Version: 9.1
+## Version: 9.2
 ## DefaultState: Enabled
-## eMail: MasterEndar@yahoo.com
 ## LoadOnDemand: 0
 ## Notes-frFR: Ajoute une touche de StarGate aux portails de mage lorsqu'ils sont incant�.  C'est un addon original, il ne change et n'ajoute rien � l'interface.  Ceci est la version basique.
 ## SavedVariables: GATEON,SOUNDFX,AUTOSUMM2,ABORTSTY,CHEVCOUNTER,JUSTYOU,MARKERS,WORMEXIT,TRAVELLER,CHEVRONCOUNT, TELERING, RINGTURNING, MGDATABASE
