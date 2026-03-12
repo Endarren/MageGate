@@ -245,6 +245,7 @@ local teleportsID = {}
 	
 	teleportsID[281403] = L["Teleport_Boralus"]
 	teleportsID[281404] = L["Teleport_Daz"]
+	
 	--teleportsID[64024]		= L["Teleport_Conservatory"]
 	
 	
@@ -291,6 +292,9 @@ local portalsID = {}
 	portalsID[224871] = L["Portal_DalaranBroken"]
 	portalsID[281400] = L["Portal_Boralus"]
 	portalsID[281402] = L["Portal_Daz"]
+	portalsID[446534] = L["Portal_Dornogal"]
+	portalsID[395289] = L["Portal_Valdrakken"]
+	portalsID[1259194] = L["Portal_Silvermoon_City"]
 	wormholeDestinations = {}
 	wormholeDestinations[67833] = "Northrend"
 	wormholeDestinations[126755] = "Pandaria"
