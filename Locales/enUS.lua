@@ -309,3 +309,9 @@ L["Teleport_Boralus"]="Teleport: Boralus"
 
 L["Portal_Daz"] ="Dazar'alor"
 L["Teleport_Daz"]="Teleport: Dazar'alor"
+
+
+L["Portal_Dornogal"] = "Portal: Dornogal"
+
+L["Portal_Valdrakken"] = "Portal: Valdrakken"
+L["Portal_Silvermoon_City"] = "Portal: Silvermoon City"
