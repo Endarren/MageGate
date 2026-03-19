@@ -1203,7 +1203,7 @@ function MageGate:SummSound()
 --Special thanks to Garshaw of Mok`Nathal for this idea.
 	area = GetSummonConfirmAreaName()
 	if self.db.profile.Traveller then
-		SendChatMessage(string.format(L["CONFIRM_SUMMON"]), self:GateGroup())
+		C_ChatInfo.SendChatMessage(string.format(L["CONFIRM_SUMMON"]), self:GateGroup())
 	end
 	if MageGate.db.profile.SummonSFX.Sound == 2 then
 		MageGate:DoFx("Interface\\AddOns\\MageGate\\Sound Files\\Rings 1.ogg",soundLevels[MageGate.db.profile.SummonSFX.Level])
@@ -1609,7 +1609,7 @@ end
 -- @param motion Not used but needed.
 function MageGatemarkerOnEnter(self, motion)
 
-	name = select(1,GetSpellInfo(self.special))
+	name = select(1,C_Spell.GetSpellInfo(self.special))
 	local beg, last = string.find(name, L["PORTAL_SEP"]);
 
 	local destinationName =  ""
@@ -1909,19 +1909,19 @@ function MageGate:UNIT_SPELLCAST_START(eveName, unitID, lineID, spellID)
 			
 				if spellID == 120146 then
 					if MageGate.db.profile.Honest == true then
-						SendChatMessage(string.format(L["DIALING_START"], L["Ancient_Dalaran"]), self:GateGroup()); --Displays portal destination
+						C_ChatInfo.SendChatMessage(string.format(L["DIALING_START"], L["Ancient_Dalaran"]), self:GateGroup()); --Displays portal destination
 					else
-						SendChatMessage(string.format(L["DIALING_START"], destinationName), self:GateGroup()); --Displays portal destination
+						C_ChatInfo.SendChatMessage(string.format(L["DIALING_START"], destinationName), self:GateGroup()); --Displays portal destination
 					end
 				else
-					SendChatMessage(string.format(L["DIALING_START"], destinationName), self:GateGroup()); --Displays portal destination
+					C_ChatInfo.SendChatMessage(string.format(L["DIALING_START"], destinationName), self:GateGroup()); --Displays portal destination
 				end
 				
 			end
 
 			if MageGate.db.profile.Portal[spellID].ChevronCall == true then  -- Only needs timer if chevron counter is on.
 
-				local name, rank, icon, castTime, minRange, maxRange = GetSpellInfo(spellID)
+				local name, rank, icon, castTime, minRange, maxRange = C_Spell.GetSpellInfo(spellID)
 
 				--print (castTime .. " / " .. MageGate.db.profile.Portal[spellID].ChevronCount..  " * 1000")--  castTime / (MageGate.db.profile.Portal[spellID].ChevronCount*1000))
 				pTimer = MageGate:ScheduleRepeatingTimer("ChevronNLocked", castTime / (MageGate.db.profile.Portal[spellID].ChevronCount*1000), spellID )
@@ -1931,10 +1931,10 @@ function MageGate:UNIT_SPELLCAST_START(eveName, unitID, lineID, spellID)
 			channeling = true;
 			--AnnounceDialing
 			if MageGate.db.profile.SinglePortalSetting.AnnDial then
-				SendChatMessage(string.format(L["DIALING_START"], destinationName), self:GateGroup()); --Displays portal destination
+				C_ChatInfo.SendChatMessage(string.format(L["DIALING_START"], destinationName), self:GateGroup()); --Displays portal destination
 			end
 			if  MageGate.db.profile.SinglePortalSetting.FullChev == true then  -- Only needs timer if chevron counter is on.
-				local name, rank, icon, castTime, isFunnel, powerType, emyt, minRange, maxRange = GetSpellInfo(spell)
+				local name, rank, icon, castTime, isFunnel, powerType, emyt, minRange, maxRange = C_Spell.GetSpellInfo(spell)
 				pTimer = MageGate:ScheduleRepeatingTimer("ChevronNLocked", castTime / ( MageGate.db.profile.SinglePortalSetting.ChevMax*1000), spellID )
 			end
 		end
@@ -2085,7 +2085,7 @@ function MageGate:UNIT_SPELLCAST_INTERRUPTED(eveName, unitID, lineID, spellID)
 			if  (unitID == "player")  then
 				channeling = false;
 				if MageGate.db.profile.Portal[spellID].AnnounceAbort and MageGate.db.profile.SinglePortalSetting.Active == false or MageGate.db.profile.SinglePortalSetting.Active and MageGate.db.profile.SinglePortalSetting.AnnAbort then
-					SendChatMessage(L["DIALING_ABORTED"], self:GateGroup());
+					C_ChatInfo.SendChatMessage(L["DIALING_ABORTED"], self:GateGroup());
 				end
 				if self.db.profile.ChevronCounter == true or MageGate.db.profile.SinglePortalSetting.FullChev == true then
 					self:CancelChevrons();
